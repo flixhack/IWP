@@ -1,11 +1,14 @@
+const findDieValue = 6
+
 let diceRoll=[1,6,6,2,3,4,6];
 
 
+findDice(diceRoll, compareNum);
 
-get6s(diceRoll);
 
-function is6(v) {
-    if (v === 6){
+
+function compareNum(num, v) {
+    if (num === v){
         return 1;
     }
     else {
@@ -15,10 +18,10 @@ function is6(v) {
 
 
 
-function get6s(roll) {
+function findDice(roll, compareNum) {
     for (var i = 0; i < roll.length; i++) {
-        if (is6(roll[i] === 1)) {
-            console.log(i, ":", roll[i]);
+        if (compareNum(roll[i], findDieValue)=== 1) {
+            console.log(i + ": " + roll[i]);
         }
     }
 }
@@ -26,7 +29,7 @@ function get6s(roll) {
 // function get6s(roll) {
 //   for (var i = 0; i < diceRoll.length; i++) {
 //     if (diceRoll[i] === 6) {
-      console.log("[",i, ":", diceRoll[i],"]");
+    // console.log("[",i, ":", diceRoll[i],"]");
 //     }
 //   }
 // }
