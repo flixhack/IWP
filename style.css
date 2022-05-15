@@ -4,14 +4,15 @@
 }
 
 :root {
-  --hue-neutral: 220;
+  --hue-neutral: 250;
+  --hue-general: 0;
   --hue-smoking: 0;
-  --hue-gender: 0;
-  --hue-age: 40;
-  --hue-foreign-religion: 80;
-  --hue-university: 120;
-  --hue-household1: 160;
-  --hue-household2: 200;
+  --hue-gender: 40;
+  --hue-age: 80;
+  --hue-foreign-religion: 120;
+  --hue-university: 160;
+  --hue-household1: 200;
+  --hue-household2: 220;
 }
 
 body {
@@ -25,6 +26,10 @@ body {
   align-items: center;
   background-color: hsl(var(--hue-neutral), 50%, 50%);
 
+}
+
+body.general{
+  background-color: hsl(var(--hue-general), 100%, 20%);
 }
 
 body.smoking {
