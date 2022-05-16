@@ -1,27 +1,27 @@
-const startButton = document.getElementById('start-btn')
-const questionContainerElement = document.getElementById('question-contain')
-const nextButton = document.getElementById('next-btn')
-const nextSectionButton = document.getElementById('nextSec-btn')
-const calculateButton = document.getElementById('calc-btn')
+const startButton = document.getElementById('start-btn');
+const questionContainerElement = document.getElementById('question-contain');
+const nextButton = document.getElementById('next-btn');
+const nextSectionButton = document.getElementById('nextSec-btn');
+const calculateButton = document.getElementById('calc-btn');
 
-let sectionIndex, questionIndex
-const questionElement = document.getElementById('question')
-const answerButtonsElement = document.getElementById('answr-btn')
+let sectionIndex, questionIndex;
+const questionElement = document.getElementById('question');
+const answerButtonsElement = document.getElementById('answr-btn');
 
-startButton.addEventListener('click', startSurvey)
+startButton.addEventListener('click', startSurvey);
 nextButton.addEventListener('click', () => {
-    questionIndex++
+    questionIndex++;
 })
 nextSectionButton.addEventListener('click', ()=> {
-    sectionIndex++
+    sectionIndex++;
 })
-calculateButton.addEventListener('click', calculate)
+calculateButton.addEventListener('click', calculate);
 
 function startSurvey() { 
-    startButton.classList.add('hide')
-    sectionIndex = 0
-    questionContainerElement.classList.remove('hide')
-    newSection(0)
+    startButton.classList.add('hide');
+    sectionIndex = 0;
+    questionContainerElement.classList.remove('hide');
+    newSection(sectionIndex);
 }
 
 function newSection(sectionIndex) {
