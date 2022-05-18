@@ -1,4 +1,3 @@
-import {} from "main.js"
 
 const http = require('http')
 const fs = require('fs')
