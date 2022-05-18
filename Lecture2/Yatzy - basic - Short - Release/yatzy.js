@@ -165,6 +165,13 @@ function calcIdentical(diceCount,N){
  return 0;
 }
 
+//Function to calculate pair excluding a specific value
+function calcSameExclude(diceCount, v, N){
+  for(let i=maxDice;i>=minDice;i--)
+  if(diceCount[i]>=N && i != v) 
+     return i*N;
+ return 0;
+}
 //Function to the score of "a pair"
 function calcPair(diceCount){
   return calcIdentical(diceCount,2)
@@ -176,14 +183,51 @@ function calcPair(diceCount){
 //dicesRoll [2,2,5,5,6,6,6,6]
 //diceCount [0,0,2,0,0,2,4] should give 6+6+5+5
 function calcTwoPairs(diceCount){
-    return 0;
+    // for (let i = 6; i<=1; i--){
+    var pair1 = calcPair(diceCount);
+    if (pair1 === 0){
+      return 0;
+    }
+    var pair2 = calcSameExclude(diceCount, pair1/2, 2);
+    if (pair1 === 0 || pair2 === 0){
+      return 0;
+    }
+    return pair1 + pair2;
 }
 
 //Computes the score of a straight Little straight: dice values 1-5; big straight 2-6
-function calcStraight(diceCount,start,stop){return 0;}
-function calcHouse(diceCount){ return 0; }
-function calcChance(diceCount){ return 0;}
-function calcYatzy(diceCount){ return 0;}
+function calcStraight(diceCount,start,stop){
+  var sum = 0;
+  for (var i = start; i <= stop; i++) {
+    if (diceCount[i] === 0)
+    return 0;
+  sum = sum + i;
+  }
+  return sum;
+}
+
+function calcHouse(diceCount){ 
+  var threeSame = calcIdentical(diceCount,3)
+  var pair = calcSameExclude(diceCount, threeSame/3, 2)
+  if (threeSame !=0 && pair !=0){
+    return threeSame + pair;
+  }
+  return 0; 
+}
+
+function calcChance(diceCount){ 
+  var sum = diceCount.reduce((partialSum, a)=>partialSum + a,0);
+  return sum;
+}
+
+
+function calcYatzy(diceCount){ 
+  var sum = calcIdentical(diceCount, 6) + 50;
+  if (sum > 50){
+    return sum;
+  }
+  return 0;
+}
 
 
 
